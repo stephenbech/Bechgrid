@@ -33,3 +33,35 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 "# Bechgrid" 
+
+## Installation
+
+To run this project locally, follow these steps:
+
+1. Clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/stephenbech/moviebox
+
+1.1 cd your-project
+
+1.2 npm install
+ 
+ ## Usage
+
+To start the development server and run the application, use the following command:
+
+```bash
+npm start
+
+## Accessing the Application
+
+Once the application is running, you can access it in your web browser at:
+
+## Stopping the Application
+
+To stop the development server and terminate the application, you can press `Ctrl + C` in the terminal where the application is running.
+
+
+
+"# moviebox2.0" 
