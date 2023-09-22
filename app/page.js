@@ -15,7 +15,7 @@ export default function Home() {
     };
     
    try{
-     const response = await axios.post("http://localhost:3000/api/auth/login", payload)
+     const response = await axios.post("/api/auth/login", payload)
      console.log(response)
      alert(JSON.stringify(response.data));
 

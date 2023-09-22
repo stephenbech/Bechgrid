@@ -41,7 +41,7 @@ To run this project locally, follow these steps:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/stephenbech/moviebox
+   git clone https://github.com/stephenbech/bechhgrid
 
 1.1 cd your-project
 
