@@ -50,7 +50,7 @@ export default function ResultPageLayout({children}) {
       return (
             <div> 
                   
-                 <main className="max-w-6xl ">
+                 <main className=" ">
                  {children}
                  </main>
             </div>

@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/results/[term]/page.js"  ],
+, "app/results/[...myParams]/page.js"  ],
   "exclude": [
     "node_modules"
   ]

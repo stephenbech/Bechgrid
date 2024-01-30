@@ -65,11 +65,6 @@ export default function Home() {
                       <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
                         Password
                       </label>
-                      <div className="text-sm">
-                        <a href="#" className="font-semibold text-indigo-400 hover:text-indigo-300">
-                          Forgot password?
-                        </a>
-                      </div>
                     </div>
                     <div className="mt-2">
                       <input

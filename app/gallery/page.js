@@ -7,7 +7,7 @@ export default  function GalleryPage(){
       return (        
                <main>
                   <NavBar/>       
-                <ImageCard />
+                  <ImageCard />
                </main>
       )
 }

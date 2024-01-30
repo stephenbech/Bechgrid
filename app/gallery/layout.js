@@ -50,7 +50,7 @@ export default function GalleryPageLayout({children}) {
       return (
             <div>
                   
-                 <main className="max-w-7xl ">
+                 <main className="  mx-auto">
                  
                  {children}
                  </main>
