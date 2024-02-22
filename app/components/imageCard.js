@@ -115,20 +115,22 @@ import ImgContainer from "./imgContainer";
 import { CSS } from "@dnd-kit/utilities";
 import Masonry from 'react-masonry-css';
 import Footer from "./Footer";
+import Pagination from './Pagination';
 import getPrevNextPages from "../lib/getPrevNextPages"
 const breakpointColumnsObj = {
   default: 3,
-  3000: 5,
-  2000: 5,
-  1200: 4,
+  3000: 4,
+  2000: 4,
+  1200: 3,
   1000: 3,
   500: 2,
 };
 
-export default function Home({topic = "curated", page }) {
+export default function Home({topic, searchParams }) {
     const sensors = useSensors(useSensor(PointerSensor), useSensor(KeyboardSensor));
   const [photos, setPhotos] = useState([])
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [usersPerPage] = useState(8);
   const onDragEnd = (event) => {
     
     const { active, over } = event;
@@ -142,19 +144,22 @@ export default function Home({topic = "curated", page }) {
         });
   };
 
- 
+ ;;;
 
-  let url 
-    if (topic === "curated" && page ) { //browsing beyond home
-        url = `https://api.pexels.com/v1/curated?page=${page}`
-    } else if ( topic !== "curated"){ //home
-         url = 'https://api.pexels.com/v1/curated'
-    } else if (!page) { // 1st page of search results
-        url = `https://api.pexels.com/v1/search?query=${topic}`
-    } else { //  search result beyond 1st page
-        url = `https://api.pexels.com/v1/search?query=${topic}&page=${page}`
-    }
+  // let url
+  //   if (topic === 'curated' && page) { // browsing beyond home 
+  //       url = `https://api.pexels.com/v1/curated?page=${page}`
+  //   } else if (topic === 'curated') { // home 
+  //       url = 'https://api.pexels.com/v1/curated'
+  //   } else if (!page) { // 1st page of search results 
+  //       url = `https://api.pexels.com/v1/search?query=${topic}`
+  //   } else { // search result beyond 1st page
+  //       url = `https://api.pexels.com/v1/search?query=${topic}&page=${page}`
+  //   }
 
+  const url = !topic
+  ? 'https://api.pexels.com/v1/curated'
+  : `https://api.pexels.com/v1/search?query=${topic}`
 
 
 
@@ -180,9 +185,17 @@ export default function Home({topic = "curated", page }) {
         </h1>
      )  
   }
+
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentPhotos = photos.slice(indexOfFirstUser, indexOfLastUser);
+
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   const { prevPage, nextPage } = getPrevNextPages(photos)
 
-  const footerProps = { topic, page, nextPage, prevPage }
+  // const footerProps = { topic, page, nextPage, prevPage }
 
   const SortablePhotos = ({photo}) => {
     const {
@@ -220,14 +233,20 @@ export default function Home({topic = "curated", page }) {
        
             <SortableContext items={photos} >
             <Masonry className="flex animate-slide-fwd" breakpointCols={breakpointColumnsObj}>
-            {photos.map((photo) => (           
+            {currentPhotos.map((photo) => (           
                     <SortablePhotos   key={photo.id} photo={photo}   />          
             ))}
              </Masonry>
             </SortableContext>
        
     </DndContext>
-    <Footer {...footerProps} />
+    <div className='mt-8'>
+      <Pagination
+           usersPerPage={usersPerPage}
+           totalUsers={photos.length}
+           paginate={paginate}
+       />
+    </div>
     </>
   );
 }

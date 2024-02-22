@@ -1,6 +1,6 @@
 // metadata.js
-export function generateMetadata({ params: { term } }) {
+export function generateMetadata({myParams }) {
   return {
-    title: `Results for ${term}`
+    title: `Results for ${myParams}`
   };
 }

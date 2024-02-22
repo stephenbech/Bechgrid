@@ -13,7 +13,7 @@ export default function Footer({ topic, page, prevPage, nextPage }) {
 
     const nextPageArea = nextPage
         ? (
-            <Link href={`/results/${topic}/${nextPage}`} className={!prevPage ? "mx-auto" : ""} >
+            <Link href={`/results/${topic}/${nextPage}`} className={!prevPage ? "mx-auto" : null} >
                 {!prevPage ? "more" : null} &gt;&gt;&gt;
             </Link>
         )
@@ -22,7 +22,7 @@ export default function Footer({ topic, page, prevPage, nextPage }) {
     const prevPageArea = prevPage
         ? (
             <>
-                <Link href={`/results/${topic}/${prevPage}`} className={!nextPage ? "mx-auto" : ""} >
+                <Link href={`/results/${topic}/${prevPage}`} className={!nextPage ? "mx-auto" : null} >
                     &lt;&lt;&lt; {!nextPage ? "back" : null}
                 </Link>
 

@@ -9,7 +9,7 @@ export default function Search() {
 
       const handleSubmit = (e) => {
             e.preventDefault()
-           if (search) router.push(`/results/${search}`)
+           router.push(`/results/${search}`)
             setSearch('')     
       }
 

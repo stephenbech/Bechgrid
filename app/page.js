@@ -1,9 +1,11 @@
 "use client"
-
+import { useState } from 'react'  
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
+import { HiOutlineEye, HiOutlineEyeOff } from 'react-icons/hi';
 
 export default function Home() {
+  const [showNewPassword, setShowNewPassword] = useState(false);
   const {push} = useRouter()
 
   const handleSubmit = async (event) => {
@@ -28,10 +30,11 @@ export default function Home() {
     alert(error);
   }
 
-   
-
    }
   }
+   const handleTogglePassword = () => {
+    setShowNewPassword(!showNewPassword);
+  };
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -54,8 +57,9 @@ export default function Home() {
                         name="username"
                         type="text"
                         autoComplete="username"
+                        value="user@example.com"
                         required
-                        className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 bg-white/5 py-1.5 px-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
@@ -66,15 +70,23 @@ export default function Home() {
                         Password
                       </label>
                     </div>
-                    <div className="mt-2">
+                    <div className="mt-2 relative">
                       <input
                         id="password"
                         name="password"
-                        type="password"
+                        type={showNewPassword ? 'text' : 'password'}
                         autoComplete="current-password"
+                        value="1Password"
                         required
-                        className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 bg-white/5 py-1.5 px-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                       />
+                      <button
+                        onClick={handleTogglePassword}
+                        className=" cursor-pointer absolute inset-y-0 right-0 flex text-white items-center pr-3"
+                        type='button'
+                      >
+                        {showNewPassword ? <HiOutlineEyeOff className=" w-6 h-6" /> : <HiOutlineEye className=" w-6 h-6" />}
+                      </button>
                     </div>
                   </div>
       

@@ -33,14 +33,14 @@ export default function ResultPageLayout({children}) {
             return (
                   <div className="flex justify-center text-gray-900 items-center  h-screen">
                         <Circles
-                        height="80"
-                        width="80"
-                        color="#fff"
-                        ariaLabel="circles-loading"
-                        wrapperStyle={{}}
-                        wrapperClass=""
-                        visible={true}
-                  />
+                              height="80"
+                              width="80"
+                              color="#fff"
+                              ariaLabel="circles-loading"
+                              wrapperStyle={{}}
+                              wrapperClass=""
+                              visible={true}
+                        />
                   </div>
             )
       }

@@ -1,10 +1,11 @@
+import {ImagesSchemaWithPhotos} from "../models/Images"
 function getPageNumber(url) {
     const { searchParams } = new URL(url)
     return searchParams.get('page')
 }
 
-export default function getPrevNextPages(images) {
-
+export default function getPrevNextPages() {
+    const images = ImagesSchemaWithPhotos
     let nextPage = images?.next_page
         ? getPageNumber(images.next_page)
         : null
